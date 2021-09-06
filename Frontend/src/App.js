@@ -19,7 +19,9 @@ import i13 from "./assets/images/3976.png";
 import i14 from "./assets/images/3978.png";
 import i15 from "./assets/images/3980.png";
 import i16 from "./assets/images/4026.png";
-import icon from "./assets/images/Icon.png";
+import icon from "./assets/images/AvalancheLogo.png.png";
+import Fond from "./assets/images/ChibavaxFond.png";
+import Chibavax from "./assets/images/Chibavax.png";
 
 export const StyledButton = styled.button`
   padding: 8px;
@@ -62,7 +64,7 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    setFeedback("Minting your LunaLander...");
+    setFeedback("Minting your Chibivax...");
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(blockchain.account, _amount)
@@ -96,17 +98,17 @@ function App() {
   }, [blockchain.smartContract, dispatch]);
 
   return (
-    <s.Screen style={{ backgroundColor: "var(--white)" }}>
+    <s.Screen style={{ backgroundColor: "var(--red)" }}>
       {blockchain.account === "" || blockchain.smartContract === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
-          <LogoImg alt={"logo"} src={icon} />
+          <LogoImg alt={"logo"} src={Fond} />
           <s.SpacerSmall />
           <s.TextTitle style={{ textAlign: "center" }}>
-            Mint a LunaLander
+            To Mint a Chibavax
           </s.TextTitle>
           <s.SpacerSmall />
           <s.TextDescription style={{ textAlign: "center" }}>
-            Connect to the Ethereum network
+            Connect to the Avalanche network
           </s.TextDescription>
           <s.SpacerSmall />
           <StyledButton
@@ -130,7 +132,7 @@ function App() {
             <s.TextTitle
               style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}
             >
-              Mint a LunaLander
+              Mint a Chibavax
             </s.TextTitle>
           </s.Container>
           <s.Container
@@ -188,7 +190,7 @@ function App() {
             ) : (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
-                  1 LunaLander costs {data.cost / 1e18} ETH.
+                  1 Chibavax costs {data.cost / 1e18} ETH.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription style={{ textAlign: "center" }}>
@@ -221,7 +223,7 @@ function App() {
                     style={{ textAlign: "center", fontSize: 9 }}
                   >
                     Please make sure you are connected to the right network
-                    (Ethereum Mainnet) and the correct address. Please note:
+                    (Avalanche Mainnet) and the correct address. Please note:
                     Once you make the purchase, you cannot undo this action.
                   </s.TextDescription>
                   <s.SpacerSmall />
