@@ -34,15 +34,15 @@ const updateAccountRequest = (payload) => {
 export const connect = () => {
   return async (dispatch) => {
     dispatch(connectRequest());
-    const { ethereum } = window;
-    const metamaskIsInstalled = ethereum && ethereum.isMetaMask;
+    const { avalanche } = window;
+    const metamaskIsInstalled = avalanche && avalanche.isMetaMask;
     if (metamaskIsInstalled) {
-      let web3 = new Web3(ethereum);
+      let web3 = new Web3(avalanche);
       try {
-        const accounts = await ethereum.request({
+        const accounts = await avalanche.request({
           method: "eth_requestAccounts",
         });
-        const networkId = await ethereum.request({
+        const networkId = await avalanche.request({
           method: "net_version",
         });
         const NetworkData = await SmartContract.networks[networkId];
@@ -61,10 +61,10 @@ export const connect = () => {
             })
           );
           // Add listeners start
-          ethereum.on("accountsChanged", (accounts) => {
+          avalanche.on("accountsChanged", (accounts) => {
             dispatch(updateAccount(accounts[0]));
           });
-          ethereum.on("chainChanged", () => {
+          avalanche.on("chainChanged", () => {
             window.location.reload();
           });
           // Add listeners end
