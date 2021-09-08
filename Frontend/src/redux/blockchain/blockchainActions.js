@@ -1,6 +1,6 @@
 // constants
 import Web3 from "web3";
-import SmartContract from "../../contracts/Bull2.json";
+import SmartContract from "../../contracts/NCC.json";
 // log
 import { fetchData } from "../data/dataActions";
 
@@ -34,24 +34,22 @@ const updateAccountRequest = (payload) => {
 export const connect = () => {
   return async (dispatch) => {
     dispatch(connectRequest());
-    const { avalanche } = window;
-    const metamaskIsInstalled = avalanche && avalanche.isMetaMask;
+    const { ethereum } = window;
+    const metamaskIsInstalled = ethereum && ethereum.isMetaMask;
     if (metamaskIsInstalled) {
-      let web3 = new Web3(avalanche);
+      let web3 = new Web3(ethereum);
       try {
-        const accounts = await avalanche.request({
+        const accounts = await ethereum.request({
           method: "eth_requestAccounts",
         });
-        const networkId = await avalanche.request({
+        const networkId = await ethereum.request({
           method: "net_version",
         });
-        const NetworkData = await SmartContract.networks[networkId];
-        // if (networkId == 1) {
-        if (NetworkData) {
+        // const NetworkData = await SmartContract.networks[networkId];
+        if (networkId == 137) {
           const SmartContractObj = new web3.eth.Contract(
-            SmartContract.abi,
-            NetworkData.address
-            // "0x6020371b0e8a2fc259a6b111d178bba9c966a4a4"
+            SmartContract,
+            "0x58110FF26286EE367f3F58Cf1549DC175Bd3726F"
           );
           dispatch(
             connectSuccess({
@@ -61,15 +59,15 @@ export const connect = () => {
             })
           );
           // Add listeners start
-          avalanche.on("accountsChanged", (accounts) => {
+          ethereum.on("accountsChanged", (accounts) => {
             dispatch(updateAccount(accounts[0]));
           });
-          avalanche.on("chainChanged", () => {
+          ethereum.on("chainChanged", () => {
             window.location.reload();
           });
           // Add listeners end
         } else {
-          dispatch(connectFailed("Change network to Ethereum."));
+          dispatch(connectFailed("Change network to Polygon."));
         }
       } catch (err) {
         dispatch(connectFailed("Something went wrong."));
