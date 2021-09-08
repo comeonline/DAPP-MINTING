@@ -37,7 +37,8 @@ export const connect = () => {
     const { ethereum } = window;
     const metamaskIsInstalled = ethereum && ethereum.isMetaMask;
     if (metamaskIsInstalled) {
-      let web3 = new Web3(ethereum);
+      let web3 = new Web3.providers.HttpProvider(
+        `https://api.avax-test.network/ext/bc/C/rpc`);
       try {
         const accounts = await ethereum.request({
           method: "eth_requestAccounts",
