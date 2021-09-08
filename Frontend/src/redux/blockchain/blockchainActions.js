@@ -1,6 +1,6 @@
 // constants
 import Web3 from "web3";
-import SmartContract from "../../contracts/Bull.json";
+import SmartContract from "../../contracts/Street.json";
 // log
 import { fetchData } from "../data/dataActions";
 
@@ -37,8 +37,7 @@ export const connect = () => {
     const { ethereum } = window;
     const metamaskIsInstalled = ethereum && ethereum.isMetaMask;
     if (metamaskIsInstalled) {
-      let web3 = new Web3.providers.HttpProvider(
-        `https://api.avax-test.network/ext/bc/C/rpc`);
+      let web3 = new Web3(ethereum);
       try {
         const accounts = await ethereum.request({
           method: "eth_requestAccounts",
