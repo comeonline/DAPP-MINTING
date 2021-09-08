@@ -1,6 +1,6 @@
 // constants
 import Web3 from "web3";
-import SmartContract from "../../contracts/Street.json";
+import SmartContract from "../../contracts/Bull.json";
 // log
 import { fetchData } from "../data/dataActions";
 
@@ -46,10 +46,10 @@ export const connect = () => {
           method: "net_version",
         });
         // const NetworkData = await SmartContract.networks[networkId];
-        if (networkId == 137) {
+        if (networkId == 43113) {
           const SmartContractObj = new web3.eth.Contract(
             SmartContract,
-            "0x58110FF26286EE367f3F58Cf1549DC175Bd3726F"
+            "0x8Cd6866A2E46DD2B019CA7662F9dbB4282fBA038"
           );
           dispatch(
             connectSuccess({
