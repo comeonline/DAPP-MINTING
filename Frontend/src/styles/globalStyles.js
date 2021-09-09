@@ -50,8 +50,9 @@ export const Container = styled.div`
   background-position: center;
 `;
 
+
 export const TextTitle = styled.p`
-  color: var(--dark-grey);
+  color: var(--white);
   font-size: 18px;
   font-weight: 500;
 `;
