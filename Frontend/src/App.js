@@ -9,6 +9,7 @@ import styled from "styled-components";
 /*Import pour outilsweb react js*/
 import Navbar from "./compenents/Navbar.js"
 import Footer from "./compenents/Footer.js"
+import Popover from "./compenents/Popover.js"
 
 
 /*Assets*/ 
@@ -31,6 +32,7 @@ import icon from "./assets/images/AvalancheLogo.png.png";
 import Fond from "./assets/images/ChibavaxFond.png";
 import Homegif from "./assets/images/HomePage-gif-Presentation.gif";
 import Wallpaper from "./assets/images/Wallpaper.jpg";
+import WallpaperArr from "./assets/images/WallpaperArr2.jpg";
 import Chibavax from "./assets/images/Chibavax.png";
 
 export const StyledButton = styled.button`
@@ -84,7 +86,7 @@ function App() {
         from: blockchain.account,
         value: blockchain.web3.utils.toWei(
           ((Number(data.cost) / 1e18) * _amount).toString(),
-          "ETH"
+          "ether"
         ),
       })
       .once("error", (err) => {
@@ -221,6 +223,16 @@ function App() {
                   >
                     {claimingNft ? "BUSY" : "BUY 1"}
                   </StyledButton>
+                </s.Container>
+
+                <s.SpacerLarge />
+                <s.SpacerLarge />
+
+                <s.Container jc={"center"}
+                  ai={"center"}>
+                  <Popover>
+
+                  </Popover>
                 </s.Container>
 
                 <s.SpacerLarge />

@@ -1,12 +1,18 @@
+
+//import d'aide
 import React, { useState } from "react";
 import styled from "styled-components";
+
+//import image 
+import Wallpaper from "../assets/images/Wallpaper.jpg";
+import WallpaperArr from "../assets/images/WallpaperArr2.jpg";
 
 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <Nav style={{ backgroundColor: "var(--violet)" }}>
+    <Nav style={{ backgroundImage : `url(${Wallpaper})` }}>
       <Logo href="">
         Verti<span>cals</span>
       </Logo>
