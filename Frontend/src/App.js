@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 /*Import pour outilsweb react js*/
 import Navbar from "./compenents/Navbar.js"
+import Footer from "./compenents/Footer.js"
 
 
 /*Assets*/ 
@@ -83,7 +84,7 @@ function App() {
         from: blockchain.account,
         value: blockchain.web3.utils.toWei(
           ((Number(data.cost) / 1e18) * _amount).toString(),
-          "ether"
+          "ETH"
         ),
       })
       .once("error", (err) => {
@@ -107,13 +108,13 @@ function App() {
   }, [blockchain.smartContract, dispatch]);
 
   return (
-    <s.Screen>
+    <s.Screen style={{ backgroundImage : `url(${Wallpaper})` }}>
       <Navbar/>
       {blockchain.account === "" || blockchain.smartContract === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
           <s.SpacerSmall />
           <s.TextTitle style={{ textAlign: "center" }}>
-            To Mint a Chibavax
+            To Mint a Verticals
           </s.TextTitle>
           <s.SpacerSmall />
           <s.TextDescription style={{ textAlign: "center" }}>
@@ -144,7 +145,7 @@ function App() {
         <s.SpacerLarge />
         <s.SpacerLarge />
 
-          <s.Container style={{ backgroundColor : 'var(--light-grey)' }} flex={1} ai={"center"} jc={"center"}>
+          <s.Container flex={1} ai={"center"} jc={"center"}>
           <s.TextTitle>
           BRINGING THE VERTICALS NFTS 
           </s.TextTitle>
@@ -170,7 +171,6 @@ function App() {
               minHeight: "200px",
             }}
           >
-          <LogoImg alt={"logo"} src={Homegif} />
           <s.TextTitle>
           Roadmap
           </s.TextTitle>
@@ -178,7 +178,7 @@ function App() {
           </s.Container>
 
 
-          <s.Container style={{ backgroundImage : 'url(${Wallpaper})'  }} flex={1} ai={"center"} jc={"center"}>
+          <s.Container  flex={1} ai={"center"} jc={"center"}>
             <s.TextTitle
               style={{ textAlign: "center", fontSize: 45, fontWeight: "bold" }}
             >
@@ -200,7 +200,7 @@ function App() {
             ) : (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
-                  1 Verticals costs {data.cost / 1e18} ETH.
+                  1 Verticals costs {data.cost / 1e18} MATIC.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription style={{ textAlign: "center" }}>
@@ -249,6 +249,9 @@ function App() {
 
                   </s.TextDescription>
                 </s.Container>
+                <Footer>
+                  
+                </Footer>
                 <s.SpacerSmall />
               </>
             )}
