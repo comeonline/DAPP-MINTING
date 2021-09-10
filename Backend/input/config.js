@@ -126,35 +126,86 @@
  // id for edition to start from
  const startEditionFrom = 1;
  // amount of NFTs to generate in edition
- const editionSize = 10;
+ const editionSize = 500;
  // prefix to add to edition dna ids (to distinguish dna counts from different generation processes for the same collection)
  const editionDnaPrefix = 0
  
  // create required weights
  // for each weight, call 'addRarity' with the id and from which to which element this rarity should be applied
  let rarityWeights = [
-   addRarity('super_rare', 1, 2),
-   addRarity('rare', 2, 5),
-   addRarity('original', 5, 10)
+   addRarity('Commun', 1, 150),
+   addRarity('UnCommon', 150, 320),
+   addRarity('Rare', 320, 400),
+   addRarity('Super_Rare', 400, 470),
+   addRarity('Epic', 470, 490),
+   addRarity('Mythic', 490, 500),
  ];
  
  // create required layers
  // for each layer, call 'addLayer' with the id and optionally the positioning and size
  // the id would be the name of the folder in your input directory, e.g. 'ball' for ./input/ball
  const layers = [
-   addLayer('background'),
-   addLayer('costume'),
-   addLayer('Body'),
-   addLayer('cheveux'),
+   addLayer('Fond'),
+   addLayer('Base'),
+   addLayer('Lignes'),
+   addLayer('Traits'),
+   addLayer('Ajouts'),
+   addLayer('Taches'),
+   addLayer('Formes'),
    /*addLayer('bottom lid'),
    addLayer('top lid')*/
  ];
  
  // provide any specific percentages that are required for a given layer and rarity level
  // all provided options are used based on their percentage values to decide which layer to select from
- addRarityPercentForLayer('super_rare', 'costume', { 'super_rare': 33, 'rare': 33, 'original': 33 });
- addRarityPercentForLayer('super_rare', 'Body', { 'super_rare': 50, 'rare': 25, 'original': 25 });
- addRarityPercentForLayer('original', 'cheveux', { 'super_rare': 50, 'rare': 25, 'original': 25 });
+ addRarityPercentForLayer('Commun', 'Fond', { 'Commun': 100});
+ addRarityPercentForLayer('UnCommon', 'Fond', { 'UnCommon': 100});
+ addRarityPercentForLayer('Rare', 'Fond', { 'Rare': 100});
+ addRarityPercentForLayer('Super_Rare', 'Fond', { 'Super_Rare': 100});
+ addRarityPercentForLayer('Epic', 'Fond', { 'Epic': 100});
+ addRarityPercentForLayer('Mythic', 'Fond', { 'Mythic': 100});
+
+ addRarityPercentForLayer('Commun', 'Base', { 'Commun': 90, 'UnCommon': 10, });
+ addRarityPercentForLayer('UnCommon', 'Base', { 'Commun': 10, 'UnCommon': 90});
+ addRarityPercentForLayer('Rare', 'Base', { 'Rare': 100 });
+ addRarityPercentForLayer('Super_Rare', 'Base', { 'Super_Rare': 80, 'Rare': 20});
+ addRarityPercentForLayer('Epic', 'Base', { 'Epic': 70, 'Super_Rare': 20, 'Rare': 10 });
+ addRarityPercentForLayer('Mythic', 'Base', { 'Mythic': 70, 'Epic': 20, 'Super_Rare': 10 });
+
+ addRarityPercentForLayer('Commun', 'Lignes', { 'Commun': 90, 'UnCommon': 10, });
+ addRarityPercentForLayer('UnCommon', 'Lignes', { 'Commun': 10, 'UnCommon': 90 });
+ addRarityPercentForLayer('Rare', 'Lignes', { 'Rare': 100 });
+ addRarityPercentForLayer('Super_Rare', 'Lignes', { 'Super_Rare': 80, 'Rare': 20});
+ addRarityPercentForLayer('Epic', 'Lignes', { 'Epic': 70, 'Super_Rare': 20, 'Rare': 10 });
+ addRarityPercentForLayer('Mythic', 'Lignes', { 'Mythic': 70, 'Epic': 20, 'Super_Rare': 10 });
+
+ addRarityPercentForLayer('Commun', 'Traits', { 'Commun': 90, 'UnCommon': 10, });
+ addRarityPercentForLayer('UnCommon', 'Traits', { 'Commun': 10, 'UnCommon': 90});
+ addRarityPercentForLayer('Rare', 'Traits', { 'Rare': 100 });
+ addRarityPercentForLayer('Super_Rare', 'Traits', { 'Super_Rare': 80, 'Rare': 20});
+ addRarityPercentForLayer('Epic', 'Traits', { 'Epic': 70, 'Super_Rare': 20, 'Rare': 10 });
+ addRarityPercentForLayer('Mythic', 'Traits', { 'Mythic': 70, 'Epic': 20, 'Super_Rare': 10 });
+
+ addRarityPercentForLayer('Commun', 'Ajouts', { 'Commun': 90, 'UnCommon': 10, });
+ addRarityPercentForLayer('UnCommon', 'Ajouts', { 'Commun': 10, 'UnCommon': 90 });
+ addRarityPercentForLayer('Rare', 'Ajouts', { 'Rare': 100 });
+ addRarityPercentForLayer('Super_Rare', 'Ajouts', { 'Super_Rare': 80, 'Rare': 20});
+ addRarityPercentForLayer('Epic', 'Ajouts', { 'Epic': 70, 'Super_Rare': 20, 'Rare': 10 });
+ addRarityPercentForLayer('Mythic', 'Ajouts', { 'Mythic': 70, 'Epic': 20, 'Super_Rare': 10 });
+
+ addRarityPercentForLayer('Commun', 'Taches', { 'Commun': 90, 'UnCommon': 10, });
+ addRarityPercentForLayer('UnCommon', 'Taches', { 'Commun': 10, 'UnCommon': 90 });
+ addRarityPercentForLayer('Rare', 'Taches', { 'Rare': 100 });
+ addRarityPercentForLayer('Super_Rare', 'Taches', { 'Super_Rare': 80, 'Rare': 20});
+ addRarityPercentForLayer('Epic', 'Taches', { 'Epic': 70, 'Super_Rare': 20, 'Rare': 10 });
+ addRarityPercentForLayer('Mythic', 'Taches', { 'Mythic': 70, 'Epic': 20, 'Super_Rare': 10 });
+
+ addRarityPercentForLayer('Commun', 'Formes', { 'Commun': 90, 'UnCommon': 10, });
+ addRarityPercentForLayer('UnCommon', 'Formes', { 'Commun': 10, 'UnCommon': 90 });
+ addRarityPercentForLayer('Rare', 'Formes', { 'Rare': 100 });
+ addRarityPercentForLayer('Super_Rare', 'Formes', { 'Super_Rare': 80, 'Rare': 20});
+ addRarityPercentForLayer('Epic', 'Formes', { 'Epic': 70, 'Super_Rare': 20, 'Rare': 10 });
+ addRarityPercentForLayer('Mythic', 'Formes', { 'Mythic': 70, 'Epic': 20, 'Super_Rare': 10 });
  
  module.exports = {
    layers,
