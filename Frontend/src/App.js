@@ -10,6 +10,7 @@ import styled from "styled-components";
 import Navbar from "./compenents/Navbar.js"
 import Footer from "./compenents/Footer.js"
 import Popover from "./compenents/Popover.js"
+import Bouton from "./compenents/Bouton.js"
 
 
 /*Assets*/ 
@@ -159,28 +160,18 @@ function App() {
           </s.TextTitle>
           </s.Container>
           <s.SpacerLarge />
-          <s.SpacerLarge />
-          <s.SpacerLarge />
-          <s.SpacerLarge />
-          <s.Container
-            ai={"center"}
-            jc={"center"}
-            fd={"row"}
-            style={{
-              flexWrap: "wrap",
-              overflow: "hidden",
-              maxHeight: "200px",
-              minHeight: "200px",
-            }}
-          >
-          <s.TextTitle>
-          Roadmap
-          </s.TextTitle>
-
-          </s.Container>
-
+          
 
           <s.Container  flex={1} ai={"center"} jc={"center"}>
+           <StyledButton
+                    disabled={claimingNft ? 1 : 0}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      claimNFTs(1);
+                    }}
+                  >
+                    {claimingNft ? "BUSY" : "BUY 1"}
+                  </StyledButton>
             <s.TextTitle
               style={{ textAlign: "center", fontSize: 45, fontWeight: "bold" }}
             >
@@ -214,15 +205,9 @@ function App() {
                 </s.TextDescription>
                 <s.SpacerMedium />
                 <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                  <StyledButton
-                    disabled={claimingNft ? 1 : 0}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      claimNFTs(1);
-                    }}
-                  >
-                    {claimingNft ? "BUSY" : "BUY 1"}
-                  </StyledButton>
+                  <Bouton>
+
+                  </Bouton>
                 </s.Container>
 
                 <s.SpacerLarge />
