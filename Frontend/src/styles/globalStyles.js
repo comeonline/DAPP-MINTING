@@ -3,7 +3,7 @@ import styled from "styled-components";
 // Used for wrapping a page component
 export const Screen = styled.div`
   background-color: var(--dark-grey);
-  background-image: ${({ image }) => (image ? `url(${image})` : "none")};
+  background-image: url("./assets/images/Wallpaper.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -50,19 +50,20 @@ export const Container = styled.div`
   background-position: center;
 `;
 
+
 export const TextTitle = styled.p`
-  color: var(--dark-grey);
+  color: var(--white);
   font-size: 18px;
   font-weight: 500;
 `;
 
 export const TextSubTitle = styled.p`
-  color: var(--dark-grey);
+  color: var(--white);
   font-size: 14px;
 `;
 
 export const TextDescription = styled.p`
-  color: var(--dark-grey);
+  color: var(--white);
   font-size: 12px;
 `;
 

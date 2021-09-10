@@ -1,9 +1,16 @@
+/*Import des méthodes et modules */
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+
+/*Import pour outilsweb react js*/
+import Navbar from "./compenents/Navbar.js"
+
+
+/*Assets*/ 
 import i1 from "./assets/images/1.png";
 import i2 from "./assets/images/20.png";
 import i3 from "./assets/images/25.png";
@@ -21,6 +28,8 @@ import i15 from "./assets/images/3980.png";
 import i16 from "./assets/images/4026.png";
 import icon from "./assets/images/AvalancheLogo.png.png";
 import Fond from "./assets/images/ChibavaxFond.png";
+import Homegif from "./assets/images/HomePage-gif-Presentation.gif";
+import Wallpaper from "./assets/images/Wallpaper.jpg";
 import Chibavax from "./assets/images/Chibavax.png";
 
 export const StyledButton = styled.button`
@@ -64,7 +73,7 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    setFeedback("Minting your Chibivax...");
+    setFeedback("Minting your Verticals...");
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(blockchain.account, _amount)
@@ -84,7 +93,7 @@ function App() {
       })
       .then((receipt) => {
         setFeedback(
-          "WOW, you now own a LunaLander. go visit Opensea.io to view it."
+          "WOW, you now own a Verticals. go visit Opensea.io to view it."
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -98,17 +107,17 @@ function App() {
   }, [blockchain.smartContract, dispatch]);
 
   return (
-    <s.Screen style={{ backgroundColor: "var(--red)" }}>
+    <s.Screen>
+      <Navbar/>
       {blockchain.account === "" || blockchain.smartContract === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
-          <LogoImg alt={"logo"} src={Fond} />
           <s.SpacerSmall />
           <s.TextTitle style={{ textAlign: "center" }}>
             To Mint a Chibavax
           </s.TextTitle>
           <s.SpacerSmall />
           <s.TextDescription style={{ textAlign: "center" }}>
-            Connect to the Avalanche network
+            Connect to the Polygon network
           </s.TextDescription>
           <s.SpacerSmall />
           <StyledButton
@@ -128,13 +137,28 @@ function App() {
         </s.Container>
       ) : (
         <s.Container flex={1}>
-          <s.Container style={{ minHeight: 80 }} jc={"center"} ai={"center"}>
-            <s.TextTitle
-              style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}
-            >
-              Mint a Chibavax
-            </s.TextTitle>
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+
+          <s.Container style={{ backgroundColor : 'var(--light-grey)' }} flex={1} ai={"center"} jc={"center"}>
+          <s.TextTitle>
+          BRINGING THE VERTICALS NFTS 
+          </s.TextTitle>
+          <s.TextTitle>
+          TO THE 
+          </s.TextTitle>
+          <s.TextTitle>
+          POLYGON COMMUNITY
+          </s.TextTitle>
           </s.Container>
+          <s.SpacerLarge />
+          <s.SpacerLarge />
+          <s.SpacerLarge />
+          <s.SpacerLarge />
           <s.Container
             ai={"center"}
             jc={"center"}
@@ -146,28 +170,19 @@ function App() {
               minHeight: "200px",
             }}
           >
-            <StyledImg alt={"example"} src={i1} />
-            <StyledImg alt={"example"} src={i2} />
-            <StyledImg alt={"example"} src={i3} />
-            <StyledImg alt={"example"} src={i4} />
-            <StyledImg alt={"example"} src={i6} />
-            <StyledImg alt={"example"} src={i7} />
-            <StyledImg alt={"example"} src={i8} />
-            <StyledImg alt={"example"} src={i9} />
-            <StyledImg alt={"example"} src={i10} />
-            <StyledImg alt={"example"} src={i11} />
-            <StyledImg alt={"example"} src={i12} />
-            <StyledImg alt={"example"} src={i13} />
-            <StyledImg alt={"example"} src={i14} />
-            <StyledImg alt={"example"} src={i15} />
-            <StyledImg alt={"example"} src={i16} />
+          <LogoImg alt={"logo"} src={Homegif} />
+          <s.TextTitle>
+          Roadmap
+          </s.TextTitle>
+
           </s.Container>
-          <s.SpacerSmall />
-          <s.Container flex={1} ai={"center"} jc={"center"}>
+
+
+          <s.Container style={{ backgroundImage : 'url(${Wallpaper})'  }} flex={1} ai={"center"} jc={"center"}>
             <s.TextTitle
-              style={{ textAlign: "center", fontSize: 35, fontWeight: "bold" }}
+              style={{ textAlign: "center", fontSize: 45, fontWeight: "bold" }}
             >
-              {data.totalSupply}/10000
+              {data.totalSupply}/1000
             </s.TextTitle>
             <s.SpacerMedium />
 
@@ -178,19 +193,14 @@ function App() {
                 </s.TextTitle>
                 <s.SpacerSmall />
                 <s.TextDescription style={{ textAlign: "center" }}>
-                  You can still find LunaLanders on{" "}
-                  <a
-                    target={"_blank"}
-                    href={"https://opensea.io/collection/lunalanders"}
-                  >
+                  You can still find The Verticals on
                     Opensea.io
-                  </a>
                 </s.TextDescription>
               </>
             ) : (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
-                  1 Chibavax costs {data.cost / 1e18} ETH.
+                  1 Verticals costs {data.cost / 1e18} ETH.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription style={{ textAlign: "center" }}>
@@ -212,8 +222,10 @@ function App() {
                     {claimingNft ? "BUSY" : "BUY 1"}
                   </StyledButton>
                 </s.Container>
+
                 <s.SpacerLarge />
                 <s.SpacerLarge />
+                
                 <s.Container
                   jc={"center"}
                   ai={"center"}
@@ -222,8 +234,9 @@ function App() {
                   <s.TextDescription
                     style={{ textAlign: "center", fontSize: 9 }}
                   >
+                    ABOUT 
                     Please make sure you are connected to the right network
-                    (Avalanche Mainnet) and the correct address. Please note:
+                    (Polygon Mainnet) and the correct address. Please note:
                     Once you make the purchase, you cannot undo this action.
                   </s.TextDescription>
                   <s.SpacerSmall />
@@ -233,6 +246,7 @@ function App() {
                     We have set the gas limit to 285000 for the contract to
                     successfully mint your NFT. We recommend that you don't
                     change the gas limit.
+
                   </s.TextDescription>
                 </s.Container>
                 <s.SpacerSmall />
