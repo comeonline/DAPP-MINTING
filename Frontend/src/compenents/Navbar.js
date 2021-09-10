@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <Nav style={{ backgroundColor: "var(--dark-grey)" }}>
+    <Nav style={{ backgroundColor: "var(--violet)" }}>
       <Logo href="">
         Verti<span>cals</span>
       </Logo>

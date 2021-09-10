@@ -73,7 +73,7 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    setFeedback("Minting your Chibivax...");
+    setFeedback("Minting your Verticals...");
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(blockchain.account, _amount)
@@ -93,7 +93,7 @@ function App() {
       })
       .then((receipt) => {
         setFeedback(
-          "WOW, you now own a LunaLander. go visit Opensea.io to view it."
+          "WOW, you now own a Verticals. go visit Opensea.io to view it."
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -107,7 +107,7 @@ function App() {
   }, [blockchain.smartContract, dispatch]);
 
   return (
-    <s.Screen style={{ backgroundColor: "var(--white)" }}>
+    <s.Screen>
       <Navbar/>
       {blockchain.account === "" || blockchain.smartContract === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
@@ -137,9 +137,12 @@ function App() {
         </s.Container>
       ) : (
         <s.Container flex={1}>
-          <s.SpacerSmall />
-          <s.SpacerSmall />
-          <s.SpacerSmall />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
+        <s.SpacerLarge />
 
           <s.Container style={{ backgroundColor : 'var(--light-grey)' }} flex={1} ai={"center"} jc={"center"}>
           <s.TextTitle>
@@ -151,9 +154,11 @@ function App() {
           <s.TextTitle>
           POLYGON COMMUNITY
           </s.TextTitle>
-          <LogoImg alt={"logo"} src={Homegif} />
           </s.Container>
-          
+          <s.SpacerLarge />
+          <s.SpacerLarge />
+          <s.SpacerLarge />
+          <s.SpacerLarge />
           <s.Container
             ai={"center"}
             jc={"center"}
@@ -165,6 +170,7 @@ function App() {
               minHeight: "200px",
             }}
           >
+          <LogoImg alt={"logo"} src={Homegif} />
           <s.TextTitle>
           Roadmap
           </s.TextTitle>
@@ -172,7 +178,7 @@ function App() {
           </s.Container>
 
 
-          <s.Container style={{ backgroundColor : 'var(--light-grey)' }} flex={1} ai={"center"} jc={"center"}>
+          <s.Container style={{ backgroundImage : 'url(${Wallpaper})'  }} flex={1} ai={"center"} jc={"center"}>
             <s.TextTitle
               style={{ textAlign: "center", fontSize: 45, fontWeight: "bold" }}
             >
@@ -194,7 +200,7 @@ function App() {
             ) : (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
-                  1 Chibavax costs {data.cost / 1e18} ETH.
+                  1 Verticals costs {data.cost / 1e18} ETH.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription style={{ textAlign: "center" }}>
@@ -240,6 +246,7 @@ function App() {
                     We have set the gas limit to 285000 for the contract to
                     successfully mint your NFT. We recommend that you don't
                     change the gas limit.
+
                   </s.TextDescription>
                 </s.Container>
                 <s.SpacerSmall />
