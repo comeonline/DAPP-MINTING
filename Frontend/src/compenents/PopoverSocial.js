@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import * as s from "../styles/globalStyles";
+import Link from '@material-ui/core/Link';
+
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -28,7 +31,7 @@ export default function SimplePopover() {
   return (
     <div>
       <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-        R
+        Social
       </Button>
       <Popover
         id={id}
@@ -44,7 +47,21 @@ export default function SimplePopover() {
           horizontal: 'center',
         }}
       >
-        <Typography className={classes.typography}>The content of the Popover.</Typography>
+        <Typography className={classes.typography}>
+          <Link color="inherit" href="">
+            Discord
+          </Link>
+          <s.SpacerXSmall>
+          </s.SpacerXSmall>
+          <Link color="inherit" href="">
+            Twitter
+          </Link>
+          <s.SpacerXSmall>
+          </s.SpacerXSmall>
+          <Link color="inherit" href="">
+            Telegram
+          </Link>
+        </Typography>
       </Popover>
     </div>
   );

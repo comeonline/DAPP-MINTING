@@ -5,6 +5,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 
+//import style
+import styled from "styled-components";
+import * as s from "../styles/globalStyles";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
@@ -40,20 +44,21 @@ export default function StickyFooter() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <Container component="main" className={classes.main} maxWidth="sm">
-        <Typography variant="h2" component="h1" gutterBottom>
-          Sticky footer
-        </Typography>
-        <Typography variant="body1">Sticky footer placeholder.</Typography>
-      </Container>
       <footer className={classes.footer}>
         <Container maxWidth="sm">
-          <Typography variant="body1">My sticky footer can be found here.</Typography>
+          <Typography variant="body1">
+            Please make sure you are connected to the right network
+            (Polygon Mainnet) and the correct address. Please note:
+            Once you make the purchase, you cannot undo this action.
+          </Typography>
+          <s.SpacerLarge />
+          <Typography>
+            We have set the gas limit to 285000 for the contract to
+            successfully mint your NFT. We recommend that you don't
+            change the gas limit.
+          </Typography>
           <Copyright />
         </Container>
       </footer>
-    </div>
   );
 }
