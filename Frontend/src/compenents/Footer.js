@@ -57,7 +57,6 @@ export default function StickyFooter() {
             successfully mint your NFT. We recommend that you don't
             change the gas limit.
           </Typography>
-          <Copyright />
         </Container>
       </footer>
   );

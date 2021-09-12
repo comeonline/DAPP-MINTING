@@ -9,7 +9,7 @@ import { fetchData } from "../redux/data/dataActions";
 
 //import popover 
 import Popover from '@material-ui/core/Popover';
-import modal from "./Modal.css";
+import "./Modal.css";
 
 //Fonction pour dévoiler 
 
@@ -18,9 +18,10 @@ const images = [
 
   {
     url: '/assets/images/Mint.png',
-    title: 'Roadmap',
+    title: 'About',
     width: '34%',
-    texte:"dsdvsvsvvs",
+    texte:"Hello, VerticalsSquad. We are happy to announce our NFT $VERTI airdrop. It is very simple! You need to buy one of our NFT collectibles released for this airdrop. By owning one, you will be eligible to get an airdrop; And obviously, you will get the airdrop multiple times if you own more than one. The total amount of NFTs is 1000. The amount of the airdrop is calculated according to the rarity of your nft ",
+    titre:"Welcome to the NFT $VERTI Airdrop!",
 
   },
   {
@@ -31,7 +32,7 @@ const images = [
   },
   {
     url: '/assets/images/Mint.png',
-    title: 'Mint',
+    title: 'Roadmap',
     width: '33%',
     texte:"dsdvsvsvvs",
   },
@@ -178,7 +179,7 @@ export default function ButtonBases() {
           <div className="modal">
             <div onClick={toggleModal} className="overlay"></div>
             <div className="modal-content">
-              <h2>Hello Modal</h2>
+              <h2>{image.titre}</h2>
               <p>
               {image.texte}
               </p>

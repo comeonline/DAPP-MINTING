@@ -5,6 +5,7 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+import Button from '@material-ui/core/Button';
 
 /*Import pour outilsweb react js*/
 import Navbar from "./compenents/Navbar.js";
@@ -97,6 +98,7 @@ function App() {
       {blockchain.account === "" || blockchain.smartContract === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
           <s.SpacerSmall />
+          
           <s.TextTitle style={{ textAlign: "center" }}>
             To Mint a Verticals
           </s.TextTitle>
@@ -105,14 +107,14 @@ function App() {
             Connect to the Polygon network
           </s.TextDescription>
           <s.SpacerSmall />
-          <StyledButton
+          <Button variant="contained" color="primary" 
             onClick={(e) => {
               e.preventDefault();
               dispatch(connect());
             }}
           >
             CONNECT
-          </StyledButton>
+          </Button>
           <s.SpacerSmall />
           {blockchain.errorMsg !== "" ? (
             <s.TextDescription style={{ textAlign: "center" }}>
