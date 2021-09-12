@@ -5,39 +5,25 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+import Button from '@material-ui/core/Button';
 
 /*Import pour outilsweb react js*/
-import Navbar from "./compenents/Navbar.js"
+import Navbar from "./compenents/Navbar.js";
+import Footer from "./compenents/Footer.js";
+import BtnMint from "./compenents/BtnMint.js";
+import BtnInfo from "./compenents/BtnInfo.js";
+import CardSupply from "./compenents/CardSupply.js";
 
 
 /*Assets*/ 
-import i1 from "./assets/images/1.png";
-import i2 from "./assets/images/20.png";
-import i3 from "./assets/images/25.png";
-import i4 from "./assets/images/36.png";
-import i6 from "./assets/images/90.png";
-import i7 from "./assets/images/89.png";
-import i8 from "./assets/images/94.png";
-import i9 from "./assets/images/135.png";
-import i10 from "./assets/images/227.png";
-import i11 from "./assets/images/310.png";
-import i12 from "./assets/images/3975.png";
-import i13 from "./assets/images/3976.png";
-import i14 from "./assets/images/3978.png";
-import i15 from "./assets/images/3980.png";
-import i16 from "./assets/images/4026.png";
-import icon from "./assets/images/AvalancheLogo.png.png";
-import Fond from "./assets/images/ChibavaxFond.png";
-import Homegif from "./assets/images/HomePage-gif-Presentation.gif";
 import Wallpaper from "./assets/images/Wallpaper.jpg";
-import Chibavax from "./assets/images/Chibavax.png";
+
 
 export const StyledButton = styled.button`
-  padding: 8px;
   border-radius: 50px;
   border: none;
   background-color: #1e9abd;
-  padding: 10px;
+  padding: 75px;
   font-weight: bold;
   color: #fff;
   width: 100px;
@@ -107,27 +93,28 @@ function App() {
   }, [blockchain.smartContract, dispatch]);
 
   return (
-    <s.Screen>
+    <s.Screen style={{ backgroundImage : `url(${Wallpaper})` }}>
       <Navbar/>
       {blockchain.account === "" || blockchain.smartContract === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
           <s.SpacerSmall />
+          
           <s.TextTitle style={{ textAlign: "center" }}>
-            To Mint a Chibavax
+            To Mint a Verticals
           </s.TextTitle>
           <s.SpacerSmall />
           <s.TextDescription style={{ textAlign: "center" }}>
             Connect to the Polygon network
           </s.TextDescription>
           <s.SpacerSmall />
-          <StyledButton
+          <Button variant="contained" color="primary" 
             onClick={(e) => {
               e.preventDefault();
               dispatch(connect());
             }}
           >
             CONNECT
-          </StyledButton>
+          </Button>
           <s.SpacerSmall />
           {blockchain.errorMsg !== "" ? (
             <s.TextDescription style={{ textAlign: "center" }}>
@@ -139,12 +126,8 @@ function App() {
         <s.Container flex={1}>
         <s.SpacerLarge />
         <s.SpacerLarge />
-        <s.SpacerLarge />
-        <s.SpacerLarge />
-        <s.SpacerLarge />
-        <s.SpacerLarge />
 
-          <s.Container style={{ backgroundColor : 'var(--light-grey)' }} flex={1} ai={"center"} jc={"center"}>
+          <s.Container flex={1} ai={"center"} jc={"center"}>
           <s.TextTitle>
           BRINGING THE VERTICALS NFTS 
           </s.TextTitle>
@@ -156,35 +139,12 @@ function App() {
           </s.TextTitle>
           </s.Container>
           <s.SpacerLarge />
-          <s.SpacerLarge />
-          <s.SpacerLarge />
-          <s.SpacerLarge />
-          <s.Container
-            ai={"center"}
-            jc={"center"}
-            fd={"row"}
-            style={{
-              flexWrap: "wrap",
-              overflow: "hidden",
-              maxHeight: "200px",
-              minHeight: "200px",
-            }}
-          >
-          <LogoImg alt={"logo"} src={Homegif} />
-          <s.TextTitle>
-          Roadmap
-          </s.TextTitle>
+          
 
-          </s.Container>
-
-
-          <s.Container style={{ backgroundImage : 'url(${Wallpaper})'  }} flex={1} ai={"center"} jc={"center"}>
-            <s.TextTitle
-              style={{ textAlign: "center", fontSize: 45, fontWeight: "bold" }}
-            >
-              {data.totalSupply}/1000
-            </s.TextTitle>
-            <s.SpacerMedium />
+          <s.Container  flex={1} ai={"center"} jc={"center"}>
+          <BtnMint/>
+          <s.SpacerMedium />
+          <s.SpacerMedium />
 
             {Number(data.totalSupply) == 10000 ? (
               <>
@@ -199,56 +159,20 @@ function App() {
               </>
             ) : (
               <>
-                <s.TextTitle style={{ textAlign: "center" }}>
-                  1 Verticals costs {data.cost / 1e18} ETH.
-                </s.TextTitle>
-                <s.SpacerXSmall />
-                <s.TextDescription style={{ textAlign: "center" }}>
-                  Excluding gas fee.
-                </s.TextDescription>
-                <s.SpacerSmall />
-                <s.TextDescription style={{ textAlign: "center" }}>
-                  {feedback}
-                </s.TextDescription>
-                <s.SpacerMedium />
+              <CardSupply/>
                 <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                  <StyledButton
-                    disabled={claimingNft ? 1 : 0}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      claimNFTs(1);
-                    }}
-                  >
-                    {claimingNft ? "BUSY" : "BUY 1"}
-                  </StyledButton>
+
                 </s.Container>
 
                 <s.SpacerLarge />
                 <s.SpacerLarge />
-                
-                <s.Container
-                  jc={"center"}
-                  ai={"center"}
-                  style={{ width: "70%" }}
-                >
-                  <s.TextDescription
-                    style={{ textAlign: "center", fontSize: 9 }}
-                  >
-                    ABOUT 
-                    Please make sure you are connected to the right network
-                    (Polygon Mainnet) and the correct address. Please note:
-                    Once you make the purchase, you cannot undo this action.
-                  </s.TextDescription>
-                  <s.SpacerSmall />
-                  <s.TextDescription
-                    style={{ textAlign: "center", fontSize: 9 }}
-                  >
-                    We have set the gas limit to 285000 for the contract to
-                    successfully mint your NFT. We recommend that you don't
-                    change the gas limit.
 
-                  </s.TextDescription>
+                <s.Container jc={"center"} ai={"center"}>
+                <BtnInfo/>
                 </s.Container>
+                <s.SpacerLarge />
+                <s.SpacerLarge />
+                <Footer/>
                 <s.SpacerSmall />
               </>
             )}
