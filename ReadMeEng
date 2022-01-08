@@ -1,0 +1,58 @@
+Bull NFT DAPP minting NFT
+
+Hello, Here is an NFT Minting Dapp
+
+Necessary material :
+
+-NODE JS -Truffle -Ganache (for test on ETH test server) -Metamask -Have a server that will keep the JSON and PNG of the nft
+
+Project description :
+
+-Backend: it is the generation of the NFTs as well as their JSON file -Contract: Creation of the token -Frontend: Dapp Minting relation with the metadata (JSON file of the nft) and the BC
+
+Start :
+
+Backend
+
+Run the command: Yarn add all Put in index.js the URL of the server which will keep the NFTs
+
+You must first have the necessary visuals to launch the automatic generation of nft. therefore PNGs to be included in the Input category
+
+Once the images are placed to generate NFTs, all you have to do is change the number you want in the index.js code and type the command: node index.js
+This will generate NFTs in the OUTPUT file as well as NFTs in the most important JSON format.
+
+The OUTPUT folder should be placed in our server at the URL indicated above.
+
+Contract
+
+Use of remix
+
+Frontend
+
+yarn add all
+
+First put our code.sol in the SmartContract.sol file
+
+To use Truffle: First start, Ganache to have a key as well as accounts already credited in ETH test to have them, just use Metemask and enter the key given at the top of the ganache client.
+
+Then entered the test RPC given in Ganache to give a new BC on Metamask RPC: HTTP://127.0.0.1:7545 Chain ID 1337
+
+In truflle Config .js
+
+development: {
+  host: "127.0.0.1", // Localhost (default: none)
+  port: 7545, // Standard Ethereum port (default: none)
+  network_id: "*", // Any network (default: none)
+Then to test
+
+truffle migrate --reset
+
+This will test our contract and create the ABIs in src contract
+
+All you have to do then, unless there is an error, is to run this command and you will have a localhost with an application that opens on the web You must connect with the metamask
+
+yarn start to start the server
+
+There it is, thanks
+
+PERREVE Enzo
